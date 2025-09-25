@@ -1,0 +1,85 @@
+// Include theme-specific fonts
+@import url('https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*-- scss:defaults --*/
+// Override theme settings (see ../template/settings.scss)
+// Base settings for all themes that can optionally be
+// overridden by the super-theme
+
+// Background of the presentation
+$backgroundColor: #fcfbf9;
+
+// Primary/body text
+$mainFont: 'Carlito', sans-serif;
+$mainFontSize: 30px;
+$mainColor: #000000;
+
+// Vertical spacing between blocks of text
+$blockMargin: 20px;
+
+// Headings
+$headingMargin: 0 0 $blockMargin 0;
+$headingFont: 'Carlito', Impact, sans-serif;
+$headingColor: #000000;
+$headingLineHeight: 1.2;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingTextShadow: none;
+$headingFontWeight: normal;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: 3.00em;
+$heading2Size: 2.11em;
+$heading3Size: 1.55em;
+$heading4Size: 1.00em;
+
+$codeFont: monospace;
+
+// Links and actions
+$linkColor: #437597;
+$linkColorHover: darken( $linkColor, 20% );
+
+// Text selection
+$selectionBackgroundColor: #FF5E99;
+$selectionColor: #fff;
+
+// start using css here
+
+#title-slide > .title {
+  position: absolute;
+  left: 325px;
+  top: 50px;
+}
+
+#title-slide > h1 {
+  color: black;
+  font-size: 70px;
+  text-align: left;
+}
+
+.quarto-title-authors {
+  position: absolute;
+  left: 318px;
+  top: 300px;
+  text-align: left;
+}
+
+
+#title-slide {
+  top: 0 !important;
+}
+
+.level1.center > h1 {
+  position: fixed;
+  left: 130px;
+  top: 170px;
+  font-size: 60px;
+}
+
+.level1.center > p {
+  position: fixed;
+  left: 130px;
+  top: 250px;
+  font-size: 40px;
+}
+
