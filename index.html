@@ -27,72 +27,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #24292e;  }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #24292e; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #d73a49; } /* Attribute */
-    code span.bn { color: #005cc5; } /* BaseN */
-    code span.bu { color: #d73a49; } /* BuiltIn */
-    code span.cf { color: #d73a49; } /* ControlFlow */
-    code span.ch { color: #032f62; } /* Char */
-    code span.cn { color: #005cc5; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #d73a49; } /* DataType */
-    code span.dv { color: #005cc5; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
-    code span.fl { color: #005cc5; } /* Float */
-    code span.fu { color: #6f42c1; } /* Function */
-    code span.im { color: #032f62; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #d73a49; } /* Keyword */
-    code span.op { color: #24292e; } /* Operator */
-    code span.ot { color: #6f42c1; } /* Other */
-    code span.pp { color: #d73a49; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #005cc5; } /* SpecialChar */
-    code span.ss { color: #032f62; } /* SpecialString */
-    code span.st { color: #032f62; } /* String */
-    code span.va { color: #e36209; } /* Variable */
-    code span.vs { color: #032f62; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-257c2bd0929509c073c8f122c92e2cdf.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -248,7 +182,8 @@ FROM (
   FROM employee_table
 ) t2
 WHERE t1.departmentCode = t2.departmentCode
-AND t1.employeeId &lt;&gt; t2.employeeId;</code></pre>
+AND t1.employeeId &lt;&gt; t2.employeeId
+AND t1.recordDate = t2.recordDate;</code></pre>
 <p>This is still quite simple, but onerous to perform using traditional SQL queries. More complex queries on relationships can be even more difficult to write and execute.</p>
 <div style="background: url(img/trad-database.png) no-repeat center center;
                         background-size: cover;
@@ -262,12 +197,31 @@ AND t1.employeeId &lt;&gt; t2.employeeId;</code></pre>
 </section>
 <section id="graph-databases" class="slide level2" data-background-image="img/SIOP-darkgrey-background.png" data-background-size="cover">
 <h2>Graph databases</h2>
-<p>If you are performing a lot of analysis on relationships between entities, you should transform your data and store it in a graph database.</p>
-<p>Graph databases store data as <strong>nodes</strong> (entities) and <strong>edges</strong> (relationships between entities). Using the Cypher graph query language as an example, the previous query would now be as simple as:</p>
-<pre><code>MATCH (e1:Employee)-[r:WORKED_IN]-&gt;(d:Department)&lt;-[r2:WORKED_IN]-(e2:Employee)
-WHERE e1.employeeId &lt;&gt; e2.employeeId
-RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode</code></pre>
-<p>Note to self: Add illustrative image&gt; showing employee nodes, department nodes, edges.</p>
+<div class="rows">
+<div class="row">
+<div class="column">
+If you are performing a lot of analysis on relationships between entities, you should transform your data and store it in a graph database.
+<p></p>
+<p>Graph databases store data as <strong>nodes</strong> (entities) and <strong>edges</strong> (relationships between entities). Using the Cypher graph query language as an example, the previous query would now look like:</p>
+</div><div class="column">
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="300" height="200"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="row">
+<pre><code>MATCH (e1:Employee)-[r1:WORKED_IN]-&gt;(d:Department)&lt;-[r2:WORKED_IN]-(e2:Employee)
+WHERE e1.employeeId &lt;&gt; e2.employeeId 
+AND r1.recordDate = r2.recordDate
+RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
+</div>
+</div>
 <div style="background: url(img/graph-database.png) no-repeat center center;
                         background-size: cover;
                         position: absolute;
@@ -278,362 +232,47 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode</code></pre>
 
 </div>
 </section>
-<section id="palmerpenguins-popularity" class="slide level2">
-<h2>palmerpenguins popularity</h2>
-<div class="columns">
-<div class="column" style="width:80%;">
-<ul>
-<li class="fragment"><p>Used globally in courses, workshops, blog posts, and other learning materials</p></li>
-<li class="fragment"><p><code>penguins</code> now in <a href="https://github.com/mcnakhaee/palmerpenguins">Python</a>, <a href="https://juliahub.com/ui/Packages/PalmerPenguins/L7ZJc/0.1.4">Julia</a>, and <a href="https://www.tensorflow.org/datasets/catalog/penguins">TensorFlow</a></p></li>
-</ul>
-</div><div class="column" style="width:20%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://allisonhorst.github.io/palmerpenguins/index.html"><img data-src="https://allisonhorst.github.io/palmerpenguins/reference/figures/palmerpenguins.png" alt="palmerpenguins hex sticker with all three penguin species by Allison Horst"></a></p>
-<figcaption>palmerpenguins hex sticker by Allison Horst</figcaption>
-</figure>
-</div>
-</div></div>
-<aside class="notes">
-<p>Kristen presents</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="section" class="slide level2" data-background-image="img/penguins.png">
-<h2></h2>
-<h3 class="r-fit-text" id="how-the-penguins-came-to-be">How the penguins came to be</h3>
-</section>
-<section id="the-research" class="slide level2">
-<h2>The research</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/kristen.png" alt="Dr. Kristen Gorman in the field, surrounded by penguins, at islands near Palmer Archipelago, Antarctica"></p>
-<figcaption>Dr.&nbsp;Kristen Gorman in the field, surrounded by penguins, at islands near Palmer Archipelago, Antarctica</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment"><p>An integrative study of the breeding ecology and population structure of Pygoscelis penguins along the western Antarctic Peninsula as part of the Palmer LTER Program (US NSF)</p></li>
-<li class="fragment"><p>The data were <a href="https://doi.org/10.1371/journal.pone.0090081">originally published</a> in PLoS ONE in 2014<sup>1</sup></p></li>
-<li class="fragment"><p>All data were made available through the <a href="https://environmentaldatainitiative.org">Environmental Data Initiative</a></p></li>
-</ul>
-</div></div>
-<aside class="notes">
-<p>Kristen presents</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Gorman KB, Williams TD, Fraser WR (2014). Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis). PLoS ONE 9(3):e90081. <a href="https://doi.org/10.1371/journal.pone.0090081" class="uri">https://doi.org/10.1371/journal.pone.0090081</a></p></li></ol></aside></section>
-<section id="section-1" class="slide level2" data-background-image="img/avian-island.jpeg">
-<h2></h2>
-<h3 class="r-fit-text" id="little-did-the-penguin-research-team-know">Little did the penguin research team know…</h3>
-</section>
-<section id="wanted-an-alternative-to-iris" class="slide level2">
-<h2>Wanted: an alternative to iris</h2>
+<section id="example-technologies" class="slide level2" data-background-image="img/SIOP-lightgrey-background.png" data-background-size="cover">
+<h2>Example technologies</h2>
 <div class="columns">
 <div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://www.sciencedirect.com/topics/mathematics/virginica"><img data-src="img/iris.jpeg" alt="Measurements of an iris flower"></a></p>
-<figcaption>Measurements of an iris flower (source: Science Direct)</figcaption>
-</figure>
-</div>
+<center>
+<p>Labeled Property Graph (LPG):</p>
+<img data-src="img/lpgs.png" class="quarto-figure quarto-figure-center" height="400">
+</center>
 </div><div class="column">
-<ul>
-<li class="fragment"><p>Collected by botanist Edgar Anderson in 1935</p></li>
-<li class="fragment"><p>Used <em>everywhere</em> in data science teaching &amp; resources</p></li>
-<li class="fragment"><p>No missing values</p></li>
-<li class="fragment"><p>Lacks metadata</p></li>
-<li class="fragment"><p>Variables like <code>Sepal.Width</code></p></li>
-<li class="fragment"><p>Published in The Annals of Eugenics (RA Fisher, 1936)</p></li>
-</ul>
+<center>
+<p>Resource Description Framework (RDF):</p>
+<img data-src="img/rdfs.png" class="quarto-figure quarto-figure-center" height="400">
+</center>
 </div></div>
-<aside class="notes">
-<p>Allison presents</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="if-something-is-a-problem-offer-a-solution" class="slide level2">
-<h2>If something is a problem, offer a solution</h2>
-<ol type="1">
-<li class="fragment"><p>Keep using <code>iris</code> and use it as an opportunity to learn/teach about its problematic aspects.</p></li>
-<li class="fragment"><p>Find a better dataset to replace <code>iris</code>.</p></li>
-</ol>
-</section>
-<section id="section-2" class="slide level2" data-background-image="img/penguin.jpeg">
-<h2></h2>
-<h3 class="r-fit-text" id="the-eternal-search-for-better-useful-datasets-for-teaching">The eternal search for (better) useful datasets for teaching</h3>
-</section>
-<section id="serendipity" class="slide level2">
-<h2>Serendipity</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<ul>
-<li class="fragment"><p>Allison stumbles upon <a href="https://dx.plos.org/10.1371/journal.pone.0090081">Gorman et al.</a> and shares it with Alison</p></li>
-<li class="fragment"><p>Alison writes a <a href="https://www.apreshill.com/blog/2020-02-take-a-sad-script-make-it-better-tidymodels-edition/">blog post</a> with penguins after Allison shares it with her</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://www.apreshill.com/blog/2020-02-take-a-sad-script-make-it-better-tidymodels-edition/"><img data-src="img/blog-post.png"></a></p>
-<figcaption>Screenshot from Alison’s first blog post using penguins from Allison</figcaption>
-</figure>
-</div></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://www.greenhumour.com/2018/04/penguins-of-world.html"><img data-src="https://www.apreshill.com/blog/2020-02-take-a-sad-script-make-it-better-tidymodels-edition/penguins-of-the-world.JPG" style="width:80.0%" alt="21 of the described species with their respective IUCN status. Aquatic and flightless birds with remarkable swimming adaptations, penguins inhabit the Southern hemisphere (except the Galapagos Penguin). They range in size from the 45 kg Emperor Penguin to the 1.5 kg Little Penguin. Penguins are threatened by habitat loss and climate change, and the African, Galapagos and Yellow-eyed are some of the most endangered penguin species."></a></p>
-<figcaption>Art by Rohan Chakravarty</figcaption>
-</figure>
-</div>
-</div></div>
-<aside class="notes">
-<p>Allison presents</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="finding-the-one" class="slide level2">
-<h2>Finding the one</h2>
-<div class="columns">
-<div class="column">
-<ul>
-<li class="fragment"><p>Meanwhile, Allison keeps playing with the penguins</p></li>
-<li class="fragment"><p>And plotting with the penguins</p></li>
-<li class="fragment"><p>And looking at more penguin pictures</p></li>
-<li class="fragment"><p>Aligns eerily well with iris data</p></li>
-</ul>
-</div><div class="column">
+<div style="background: url(img/graph-database.png) no-repeat center center;
+                        background-size: cover;
+                        position: absolute;
+                        top: 5px;
+                        right: 55px;
+                        width: 100px;
+                        height: 100px;">
 
-</div></div>
-<aside class="notes">
-<p>Allison presents</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="june-2020-4-months-into-lockdown" class="slide level2">
-<h2>June 2020 ~4 months into lockdown ☣️</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<ul>
-<li class="fragment"><p>June 4: 🐦 In excitement, Allison Horst tweets about the penguins data</p>
-<ul>
-<li class="fragment"><p>📦 Alison asks “Do you wanna build a package?”</p></li>
-<li class="fragment"><p>❓Allison deletes tweet to sort out license</p></li>
-</ul></li>
-<li class="fragment"><p>1 day later: 🔏 Allison emails Kristen about use &amp; license</p></li>
-<li class="fragment"><p>3 days later (June 8): 🚀 palmerpenguins power team assembles for the first time!</p></li>
-<li class="fragment"><p>Same day (June 8): 🏆 Allison Horst tweets (again) — with clear license info</p></li>
-<li class="fragment"><p>45 days later (July 23): 🎁 available on <a href="https://cran.r-project.org/web/packages/palmerpenguins/index.html">CRAN</a></p></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🐧🐧🐧<br><br>This penguin data is a great alternative to iris &amp; available for use by CC0 🤩 Thank you Dr. Kristen Gorman w/ <a href="https://twitter.com/UAFcfos?ref_src=twsrc%5Etfw">@UAFcfos</a>, Marty Downs w/ <a href="https://twitter.com/USLTER?ref_src=twsrc%5Etfw">@USLTER</a>, &amp; <a href="https://twitter.com/PalmerLTER?ref_src=twsrc%5Etfw">@PalmerLTER</a> for help, info &amp; making it available for use 🎉<br><br>Data, examples, &amp; use info here: <a href="https://t.co/dSIqWNFlVw">https://t.co/dSIqWNFlVw</a> 🧵 1/6 <a href="https://t.co/2Eu4AxoeZl">pic.twitter.com/2Eu4AxoeZl</a></p>— Allison Horst (@allison_horst) <a href="https://twitter.com/allison_horst/status/1270046399418138625?ref_src=twsrc%5Etfw">June 8, 2020</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div></div>
-<aside class="notes">
-<p>Allison presents</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="section-3" class="slide level2" data-background-image="img/iceberg.jpeg">
-<h2></h2>
-<h3 class="r-fit-text" id="the-making-of">The making of…</h3>
-</section>
-<section id="for-educators-by-educators" class="slide level2">
-<h2>For educators, by educators</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb5-2"><a href=""></a><span class="fu">path_to_file</span>()</span>
-<span id="cb5-3"><a href=""></a><span class="fu">path_to_file</span>(<span class="st">"penguins_raw.csv"</span>)</span>
-<span id="cb5-4"><a href=""></a><span class="fu">head</span>(<span class="fu">read.csv</span>(<span class="fu">path_to_file</span>(<span class="st">"penguins.csv"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section></section>
+<section>
+<section id="graph-dbs-in-the-wild" class="title-slide slide level1 center" data-background-image="img/SIOP-section-background.png" data-background-size="cover">
+<h1>Graph DBs in the wild</h1>
+<p>A very quick overview of scaled use cases</p>
 </section>
-<section id="to-tibble-or" class="slide level2">
-<h2>To tibble or…</h2>
+<section id="test" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover">
+<h2>Test</h2>
+</section></section>
+<section>
+<section id="a-recent-graph-breakthrough" class="title-slide slide level1 center" data-background-image="img/SIOP-section-background.png" data-background-size="cover">
+<h1>A recent graph breakthrough</h1>
+<p>How we solved the question of time use</p>
 </section>
-<section id="not-to-tibble-that-is-the-question" class="slide level2">
-<h2>Not to tibble, that is the question</h2>
-<blockquote>
-<p>“I think this gives the best of both worlds — if you’re running in a low dependency environment, you’ll get a data frame.”</p>
-<p>— Hadley Wickham<sup>1</sup></p>
-</blockquote>
-<aside class="notes">
-<p>Alison HILL presents</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Thanks to Hadley <a href="https://github.com/allisonhorst/palmerpenguins/pull/25">for this PR!</a></p></li></ol></aside></section>
-<section id="section-4" class="slide level2" data-background-iframe="https://allisonhorst.github.io/palmerpenguins/">
-<h2></h2>
-</section>
-<section id="penguins-in-the-wild" class="slide level2" data-background-image="img/penguins-wilder.png" data-background-size="contain">
-<h2>Penguins in the wild</h2>
-<aside class="notes">
-<p>Alison HILL presents</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="alison-why-has-it-been-so-popular" class="slide level2">
-<h2>Alison: Why has it been so popular?</h2>
-<ul>
-<li class="fragment"><p>The R package format - so easy to just use</p></li>
-<li class="fragment"><p>Reduces time to first pretty plot</p></li>
-<li class="fragment"><p><a href="https://allisonhorst.github.io/palmerpenguins/articles/art.html">Allison’s art</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://allisonhorst.github.io/palmerpenguins/articles/art.html"><img data-src="img/allison-penguins.png" width="800"></a></p>
-<figcaption>Allison Horst’s illustration of the 3 penguin species</figcaption>
-</figure>
-</div></li>
-</ul>
-</section>
-<section id="allison-why-has-it-been-so-popular" class="slide level2">
-<h2>Allison: Why has it been so popular?</h2>
-<div class="columns">
-<div class="column">
-<p>The data itself—distributions, linearity</p>
-</div><div class="column">
-<p>Simpson’s paradox examples in the wild!</p>
-</div></div>
-</section>
-<section id="allison-why-has-it-been-so-popular-1" class="slide level2">
-<h2>Allison: Why has it been so popular?</h2>
-<p>Good bones for multivariate analyses</p>
-<div class="columns">
-<div class="column">
-<p>Principle Components Analysis</p>
-</div><div class="column">
-<p>K-means</p>
-</div></div>
-</section>
-<section id="kristen-why-has-it-been-so-popular" class="slide level2">
-<h2>Kristen: Why has it been so popular?</h2>
-<div class="columns">
-<div class="column">
-<ul>
-<li class="fragment"><p>Penguins! (rare to see IRL, but so easy to see &amp; say)</p></li>
-<li class="fragment"><p>Understandable structural measurements</p></li>
-<li class="fragment"><p><a href="https://allisonhorst.github.io/palmerpenguins/LICENSE.html">Open license</a> underlying the data</p></li>
-<li class="fragment"><p>Ecology of species is relevant to global climate change</p></li>
-</ul>
-</div><div class="column">
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="https://allisonhorst.github.io/palmerpenguins/reference/figures/culmen_depth.png" alt="Penguin bill length is measured from start to tip of bill, whereas bill depth is measured from top of bill to bottom"></p>
-<figcaption>Penguin bills art by Allison Horst</figcaption>
-</figure>
-</div>
-</div></div>
-<aside class="notes">
-<p>Kristen presents</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="from-polar-research-project-to-global-teaching-product" class="slide level2">
-<h2>From polar research project to global teaching product</h2>
-<div class="columns">
-<div class="column">
-<ul>
-<li class="fragment"><p>Antarctic data should be available to the world - no geopolitical boundaries</p></li>
-<li class="fragment"><p>When you collect data as a scientist, you are collecting knowledge that you may not even imagine how it will be used</p></li>
-</ul>
-</div><div class="column">
-<p><img data-src="img/antarctic-modis.jpg" class="quarto-figure quarto-figure-center" alt="Map of Antarctica by Kristen Gorman"> <!--[![Map of Antarctica by R. M. Chapin](img/map.jpg){fig-alt="Map of Antarctica by R. M. Chapin" fig-align="center"}](https://www.flickr.com/photos/crossettlibrary/6941620363)--></p>
-</div></div>
-</section>
-<section id="thank-you" class="slide level2">
-<h2>Thank you!</h2>
-<p>What questions do you have?</p>
-<p>We wish to thank:</p>
-<ul>
-<li class="fragment"><p>Marty Downs at LTER</p></li>
-<li class="fragment"><p>Hadley Wickham (RStudio)</p></li>
-<li class="fragment"><p>Laura Navarro for <a href="https://lauranavarroviz.wordpress.com/2020/08/01/palmer-penguins/">this plot</a></p></li>
-<li class="fragment"><p>Cédric Scherer for <a href="https://www.behance.net/gallery/101517403/Bill-Dimensions-of-Penguins">this plot</a></p></li>
-<li class="fragment"><p>Silvia Canelón for her <a href="https://www.silviacanelon.com/talk/2020-tour-of-the-tidyverse/">great tutorial</a></p></li>
-<li class="fragment"><p>The #rstats community for blogging, tweeting, visualizing, analyzing, teaching, and sharing about <code>palmerpenguins</code></p></li>
-</ul>
+<section id="test-1" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover">
+<h2>Test</h2>
 
 </section></section>
-
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
