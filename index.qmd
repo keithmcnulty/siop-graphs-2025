@@ -162,10 +162,33 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;
                         right: 55px;
                         width: 100px;
                         height: 100px;"></div>
+                        
+
+## Put simply... {background-image="img/SIOP-lightgrey-background.png" background-size="cover"}
+
+::: columns
+
+::: column
+<center>
+If this is a traditional database...
+
+(add image from Rachel)
+</center>
+:::
+
+:::column
+<center>
+...then this is a graph database.
+
+(add image from Rachel)
+</center>
+
+:::
+
+:::
 
 
-
-## Example technologies {background-image="img/SIOP-lightgrey-background.png" background-size="cover"}
+## Example technologies {background-image="img/SIOP-darkred-background.png" background-size="cover"}
 
 ::: columns
 
@@ -204,7 +227,7 @@ Resource Description Framework (RDF):
 
 A very quick overview of scaled use cases
 
-## Test {background-image="img/SIOP-darkred-background.png" background-size="cover"}
+## One page on each major use case {background-image="img/SIOP-darkred-background.png" background-size="cover"}
 
 
 
@@ -212,5 +235,5 @@ A very quick overview of scaled use cases
 
 How we solved the question of time use
 
-## Test {background-image="img/SIOP-darkred-background.png" background-size="cover"}
+## Pages on time use {background-image="img/SIOP-darkred-background.png" background-size="cover"}
 
