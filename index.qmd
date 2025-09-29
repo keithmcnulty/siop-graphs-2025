@@ -6,11 +6,12 @@ format:
   revealjs:
     theme: ["pp.scss"]
     slide-number: c/t
-    incremental: true
+    incremental: false
     highlight-style: github
     title-slide-attributes:
       data-background-image: img/SIOP-cover-background.png
-      data-background-size: cover  
+      data-background-size: cover 
+    auto-animate-easing: ease-in-out 
 editor: source
 ---
 
@@ -164,7 +165,7 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;
                         height: 100px;"></div>
                         
 
-## Put simply... {background-image="img/SIOP-lightgrey-background.png" background-size="cover"}
+## Put simply... {background-image="img/SIOP-lightgrey-background.png" background-size="cover" auto-animate=true}
 
 ::: columns
 
@@ -177,18 +178,28 @@ If this is a traditional database...
 :::
 
 :::column
+::: {.fragment}
 <center>
 ...then this is a graph database.
 
 (add image from Rachel)
 </center>
-
+:::
 :::
 
 :::
 
+<div style="background: url(img/graph-database.png) no-repeat center center;
+                        background-size: cover;
+                        position: absolute;
+                        top: 5px;
+                        right: 55px;
+                        width: 100px;
+                        height: 100px;"></div>
 
-## Example technologies {background-image="img/SIOP-darkred-background.png" background-size="cover"}
+
+
+## Example technologies {background-image="img/SIOP-darkred-background.png" background-size="cover" auto-animate=true}
 
 ::: columns
 
@@ -204,13 +215,14 @@ Labeled Property Graph (LPG):
 ::: 
 
 ::: column
+::: {.fragment}
 
 <center>
 Resource Description Framework (RDF):
 
 ![](img/rdfs.png){height=400 fig-align="center"}
 </center>
-
+:::
 :::
 
 :::
@@ -223,11 +235,98 @@ Resource Description Framework (RDF):
                         width: 100px;
                         height: 100px;"></div>
                         
+## Typical graph data sources {background-image="img/SIOP-brightred-background.png" background-size="cover"}  
+
+::: columns
+
+::: column
+::: {.incremental}
+* **HR data** (e.g., org structure, roles, skills)
+* **Billing/financial data** (e.g., time billed on projects)
+* **Communications metadata** (e.g., calendar, email)
+* **Skills and competencies** (e.g., from HR systems, resumés, certifications, learning platforms)
+* **Document Authorship** (e.g., who wrote what, when, with whom)
+* **Semantic/similarity relationships** (e.g., job title similarity, skill similarity)
+:::
+:::
+
+::: column
+<br><br>
+![](img/general-network.png){width=400 fig-align="center"}
+:::
+
+:::
+     
+<div style="background: url(img/graph-database.png) no-repeat center center;
+                        background-size: cover;
+                        position: absolute;
+                        top: 5px;
+                        right: 55px;
+                        width: 100px;
+                        height: 100px;"></div>
+                        
+                        
 # Graph DBs in the wild {background-image="img/SIOP-section-background.png" background-size="cover"}
 
 A very quick overview of scaled use cases
 
-## One page on each major use case {background-image="img/SIOP-darkred-background.png" background-size="cover"}
+## Professional network management {background-image="img/SIOP-darkred-background.png" background-size="cover" auto-animate=false}
+
+::: columns
+
+::: column
+::: {.muchsmallertext}
+* Increasingly in large organizations, people want to manage their networks proactively (e.g., to find colleagues with similar skills and interests, to identify mentors or mentees)
+* External networks like *LinkedIn* are less effective at internal network building
+* Graph databases can be used to build internal professional networks that are helpful career development tools for employees
+* Colleagues can get recommendations for people to connect with based on 
+  - prior collaborations
+  - super-connectors (high centrality/high influence individuals)
+  - connections they have in common
+  - skill similarity
+  - biographical similarity (eg common *alma mater*)
+  - ...
+:::
+:::
+
+
+::: column
+<br><br>
+<center>
+![](img/second-order-network.png){width=300 fig-align="center"}
+</center>
+:::
+
+:::
+
+
+## Development and evaluation {background-image="img/SIOP-darkgrey-background.png" background-size="cover"}
+
+::: columns
+
+::: column
+::: {.smallertext}
+* Algorithmically suggesting references during evaluation cycles based on collaboration data
+* Formally measuring network size/centrality as part of leadership development
+* Actively tracking and measuring leadership responsibilities such as mentorshop and sponsorship of more junior colleagues
+* Identifying organizational skill/competency gaps
+* Proactively suggesting new skills to declare or develop
+* Identifying potential succession candidates based on network position and skill similarity
+:::
+:::
+
+::: column
+<br>
+<center>
+![](img/global-network.png){width=500 fig-align="center"}
+</center>
+:::
+
+:::
+
+
+
+## Other one-page themes  {background-image="img/SIOP-brightred-background.png" background-size="cover"}
 
 
 
@@ -236,4 +335,6 @@ A very quick overview of scaled use cases
 How we solved the question of time use
 
 ## Pages on time use {background-image="img/SIOP-darkred-background.png" background-size="cover"}
+
+
 

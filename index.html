@@ -28,7 +28,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-257c2bd0929509c073c8f122c92e2cdf.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-c22c0d7d127fc2f4a9522925c5dfb8e0.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -232,8 +232,8 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 
 </div>
 </section>
-<section id="put-simply" class="slide level2" data-background-image="img/SIOP-lightgrey-background.png" data-background-size="cover">
-<h2>Put simply…</h2>
+<section id="put-simply" class="slide level2" data-background-image="img/SIOP-lightgrey-background.png" data-background-size="cover" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Put simply…</h2>
 <div class="columns">
 <div class="column">
 <center>
@@ -241,14 +241,25 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 (add image from Rachel)
 </center>
 </div><div class="column">
+<div class="fragment">
 <center>
 <p>…then this is a graph database.</p>
 (add image from Rachel)
 </center>
+</div>
 </div></div>
+<div style="background: url(img/graph-database.png) no-repeat center center;
+                        background-size: cover;
+                        position: absolute;
+                        top: 5px;
+                        right: 55px;
+                        width: 100px;
+                        height: 100px;">
+
+</div>
 </section>
-<section id="example-technologies" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover">
-<h2>Example technologies</h2>
+<section id="example-technologies" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Example technologies</h2>
 <div class="columns">
 <div class="column">
 <center>
@@ -256,10 +267,37 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <img data-src="img/lpgs.png" class="quarto-figure quarto-figure-center" height="400">
 </center>
 </div><div class="column">
+<div class="fragment">
 <center>
 <p>Resource Description Framework (RDF):</p>
 <img data-src="img/rdfs.png" class="quarto-figure quarto-figure-center" height="400">
 </center>
+</div>
+</div></div>
+<div style="background: url(img/graph-database.png) no-repeat center center;
+                        background-size: cover;
+                        position: absolute;
+                        top: 5px;
+                        right: 55px;
+                        width: 100px;
+                        height: 100px;">
+
+</div>
+</section>
+<section id="typical-graph-data-sources" class="slide level2" data-background-image="img/SIOP-brightred-background.png" data-background-size="cover">
+<h2>Typical graph data sources</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li class="fragment"><strong>HR data</strong> (e.g., org structure, roles, skills)</li>
+<li class="fragment"><strong>Billing/financial data</strong> (e.g., time billed on projects)</li>
+<li class="fragment"><strong>Communications metadata</strong> (e.g., calendar, email)</li>
+<li class="fragment"><strong>Skills and competencies</strong> (e.g., from HR systems, resumés, certifications, learning platforms)</li>
+<li class="fragment"><strong>Document Authorship</strong> (e.g., who wrote what, when, with whom)</li>
+<li class="fragment"><strong>Semantic/similarity relationships</strong> (e.g., job title similarity, skill similarity)</li>
+</ul>
+</div><div class="column">
+<p><br><br> <img data-src="img/general-network.png" class="quarto-figure quarto-figure-center" width="400"></p>
 </div></div>
 <div style="background: url(img/graph-database.png) no-repeat center center;
                         background-size: cover;
@@ -276,8 +314,56 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <h1>Graph DBs in the wild</h1>
 <p>A very quick overview of scaled use cases</p>
 </section>
-<section id="one-page-on-each-major-use-case" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover">
-<h2>One page on each major use case</h2>
+<section id="professional-network-management" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover" data-auto-animate="false">
+<h2 data-id="quarto-animate-title">Professional network management</h2>
+<div class="columns">
+<div class="column">
+<div class="muchsmallertext">
+<ul>
+<li>Increasingly in large organizations, people want to manage their networks proactively (e.g., to find colleagues with similar skills and interests, to identify mentors or mentees)</li>
+<li>External networks like <em>LinkedIn</em> are less effective at internal network building</li>
+<li>Graph databases can be used to build internal professional networks that are helpful career development tools for employees</li>
+<li>Colleagues can get recommendations for people to connect with based on
+<ul>
+<li>prior collaborations</li>
+<li>super-connectors (high centrality/high influence individuals)</li>
+<li>connections they have in common</li>
+<li>skill similarity</li>
+<li>biographical similarity (eg common <em>alma mater</em>)</li>
+<li>…</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column">
+<br><br>
+<center>
+<img data-src="img/second-order-network.png" class="quarto-figure quarto-figure-center" width="300">
+</center>
+</div></div>
+</section>
+<section id="development-and-evaluation" class="slide level2" data-background-image="img/SIOP-darkgrey-background.png" data-background-size="cover">
+<h2>Development and evaluation</h2>
+<div class="columns">
+<div class="column">
+<div class="smallertext">
+<ul>
+<li>Algorithmically suggesting references during evaluation cycles based on collaboration data</li>
+<li>Formally measuring network size/centrality as part of leadership development</li>
+<li>Actively tracking and measuring leadership responsibilities such as mentorshop and sponsorship of more junior colleagues</li>
+<li>Identifying organizational skill/competency gaps</li>
+<li>Proactively suggesting new skills to declare or develop</li>
+<li>Identifying potential succession candidates based on network position and skill similarity</li>
+</ul>
+</div>
+</div><div class="column">
+<br>
+<center>
+<img data-src="img/global-network.png" class="quarto-figure quarto-figure-center" width="500">
+</center>
+</div></div>
+</section>
+<section id="other-one-page-themes" class="slide level2" data-background-image="img/SIOP-brightred-background.png" data-background-size="cover">
+<h2>Other one-page themes</h2>
 </section></section>
 <section>
 <section id="a-recent-graph-breakthrough" class="title-slide slide level1 center" data-background-image="img/SIOP-section-background.png" data-background-size="cover">
@@ -319,7 +405,7 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 'controlsAuto': true,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
+'autoAnimateEasing': "ease-in-out",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
