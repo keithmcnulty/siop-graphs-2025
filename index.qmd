@@ -173,7 +173,7 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;
 <center>
 If this is a traditional database...
 
-(add image from Rachel)
+![](img/relational-flowers.jpg){height=400 fig-align="center"}
 </center>
 :::
 
@@ -182,7 +182,7 @@ If this is a traditional database...
 <center>
 ...then this is a graph database.
 
-(add image from Rachel)
+![](img/graph-flowers.jpg){height=400 fig-align="center"}
 </center>
 :::
 :::
@@ -305,18 +305,16 @@ A very quick overview of scaled use cases
 ::: columns
 
 ::: column
-::: {.smallertext}
+
 * Algorithmically suggesting references during evaluation cycles based on collaboration data
 * Formally measuring network size/centrality as part of leadership development
-* Actively tracking and measuring leadership responsibilities such as mentorshop and sponsorship of more junior colleagues
-* Identifying organizational skill/competency gaps
-* Proactively suggesting new skills to declare or develop
+* Actively tracking and measuring leadership responsibilities such as mentorship and sponsorship of more junior colleagues
 * Identifying potential succession candidates based on network position and skill similarity
-:::
+
 :::
 
 ::: column
-<br>
+<br><br><br>
 <center>
 ![](img/global-network.png){width=500 fig-align="center"}
 </center>
@@ -326,15 +324,294 @@ A very quick overview of scaled use cases
 
 
 
-## Other one-page themes  {background-image="img/SIOP-brightred-background.png" background-size="cover"}
+## Skills  {background-image="img/SIOP-lightgrey-background.png" background-size="cover"}
 
+
+::: columns
+
+::: column
+::: {.smallertext}
+
+* Relating skills to each other through semantic similarity and co-occurrence in resumes and other documents
+* Relating skills, qualifications, and credentials to employees 
+* Identifying skill gaps in teams and organizations
+* Supporting learning through suggesting areas for relevant skill development
+* Helping recruiters divert candidates to similar job openings based on skills
+* Suggesting relevant roles on recruiting websites/portals
+:::
+:::
+
+::: column
+<br>
+<center>
+![](img/skill-graph.png){width=500 fig-align="center"}
+</center>
+:::
+:::
+
+
+## Organizational Design  {background-image="img/SIOP-darkred-background.png" background-size="cover"}
+
+
+::: columns
+
+::: column
+::: {.smallertext}
+* Identifying informal networks and communities of practice within organizations
+* Determining key influencers and community connectors
+* Identifying potential bottlenecks and single points of failure in communication networks
+* Understanding collaboration patterns across teams and functions
+* Supporting organizational redesign efforts by simulating changes to org structure and reporting lines
+:::
+:::
+
+::: column
+<br>
+<center>
+![](img/org-design.gif){width=400 fig-align="center"}
+</center>
+:::
+
+:::
 
 
 # A recent graph breakthrough {background-image="img/SIOP-section-background.png" background-size="cover"}
 
-How we solved the question of time use
+A simulation of how we solved the question of time use
 
-## Pages on time use {background-image="img/SIOP-darkred-background.png" background-size="cover"}
+## The problem {background-image="img/SIOP-darkred-background.png" background-size="cover"}
+
+::: columns
+
+::: column
+
+**Common questions that people ask in professional services firms:**
+
+* How did I spend my time across different types of activities?
+
+* How did I spend my time across different billable projects?
+
+* Am I creating apprenticeship opportunities for junior colleagues in my projects?
+
+:::
+
+::: column
+<center>
+![](img/hard-problem.webp){width=400 fig-align="center"}
+</center>
+:::
+
+:::
+
+
+## The calendar mystery {background-image="img/SIOP-brightred-background.png" background-size="cover"}
+
+::: columns
+
+::: column
+::: {.smallertext}
+
+**Only I understand the context of my calendar:**
+
+* Calendar entries are often not very specific (e.g., "Meeting", "Catch-up", "Weekly sync")
+* When I read my calendar I understand the context, but others do not
+* "Meeting with Keith" + "Keith and I only work on Project X" -> "Meeting about Project X"
+
+**Is there a way we can infer this context algorithmically?**
+:::
+:::
+
+::: column
+<center>
+![](img/basic-calendar.png){width=400 fig-align="center"}
+</center>
+:::
+
+:::
+
+
+## What do we know? {background-image="img/SIOP-darkgrey-background.png" background-size="cover"}
+
+::: columns
+
+::: column
+<br>
+Here is an internal meeting with three attendees.  We can determine this information from the calendar metadata.
+
+We have no idea what the meeting is about.
+:::
+
+::: column
+<center>
+![](img/three-person-meeting.svg){width=600 fig-align="center"}
+</center>
+:::
+
+:::
+
+
+## Let's add info from other systems... {background-image="img/SIOP-lightgrey-background.png" background-size="cover"}
+
+::: columns
+
+::: column
+<br>
+Let's add information from a system which tracks what projects people are working on around the date of the meeting.
+
+This suggests we might be able to infer the meeting context, but it's not definitive.
+:::
+
+::: column
+<center>
+![](img/add-project-data.svg){width=600 fig-align="center"}
+</center>
+:::
+
+:::
+
+## ...and now revisit the calendar metadata {background-image="img/SIOP-lightgrey-background.png" background-size="cover"}
+
+::: columns
+
+::: column
+<br>
+Maybe there were meetings around the same time that had external attendees too?
+
+Could the email domains of those attendees tell us something useful?
+:::
+
+::: column
+<center>
+![](img/add-externals.svg){width=600 fig-align="center"}
+</center>
+:::
+
+:::
+
+
+## Now look at the surrounding time period {background-image="img/SIOP-darkred-background.png" background-size="cover"}
+
+::: columns
+
+::: column 
+::: {.incremental}
+
+
+* Jim and Pam have been in 6 meetings together recently that had a Sabre attendee.
+* Jim and Dwight have had 4 recent meetings together with a Sabre attendee, and 5 meetings where Dunder Mifflin was present.
+* Pam and Dwight have met 9 times together recently, and all meetings had a Sabre attendee.
+
+:::
+:::
+
+::: column
+<center>
+![](img/pair-meetings.svg){width=600 fig-align="center"}
+</center>
+:::
+
+:::
+
+## This allows us to infer the meeting purpose {background-image="img/SIOP-brightred-background.png" background-size="cover"}
+
+::: columns
+
+::: column 
+:::{.incremental}
+
+* Sabre: 3 pairs, 19 meetings
+* Dunder Mifflin: 1 pair, 5 meetings
+* High likelihood that this meeting was about Sabre
+
+:::
+
+:::
+
+::: column
+<center>
+![](img/final-graph.svg){width=600 fig-align="center"}
+</center>
+:::
+
+:::
+
+## Scaled reporting of time use statistics {background-image="img/SIOP-darkgrey-background.png" background-size="cover"}
+
+
+:::columns
+
+
+:::column
+
+<br><br><br><br>
+How did I spend my time across different types of activities?
+
+:::
+
+:::column
+<center>
+
+![](img/time-spread.png){width=600 fig-align="center"}
+
+</center>
+
+:::
+:::
+
+
+
+## Scaled reporting of time use statistics {background-image="img/SIOP-darkgrey-background.png" background-size="cover"}
+
+
+:::columns
+
+
+:::column
+
+<br><br><br><br>
+How did I spend my time across different projects?
+
+:::
+
+:::column
+<center>
+<br>
+![](img/project-view.png){width=600 fig-align="center"}
+
+</center>
+
+:::
+:::
+
+
+## Scaled reporting of time use statistics {background-image="img/SIOP-darkgrey-background.png" background-size="cover"}
+
+
+:::columns
+
+
+:::column
+
+<br><br><br>
+Am I creating apprenticeship opportunities for junior colleagues in my projects?
+
+
+:::
+
+:::column
+<center>
+<br>
+![](img/apprenticeship-view.png){width=600 fig-align="center"}
+
+</center>
+
+:::
+:::
+
+
+# Thank you for listening {background-image="img/SIOP-section-background.png" background-size="cover"}
+
+## End
 
 
 

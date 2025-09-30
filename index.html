@@ -238,13 +238,13 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <div class="column">
 <center>
 <p>If this is a traditional database…</p>
-(add image from Rachel)
+<img data-src="img/relational-flowers.jpg" class="quarto-figure quarto-figure-center" height="400">
 </center>
 </div><div class="column">
 <div class="fragment">
 <center>
 <p>…then this is a graph database.</p>
-(add image from Rachel)
+<img data-src="img/graph-flowers.jpg" class="quarto-figure quarto-figure-center" height="400">
 </center>
 </div>
 </div></div>
@@ -345,33 +345,210 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <h2>Development and evaluation</h2>
 <div class="columns">
 <div class="column">
-<div class="smallertext">
 <ul>
 <li>Algorithmically suggesting references during evaluation cycles based on collaboration data</li>
 <li>Formally measuring network size/centrality as part of leadership development</li>
-<li>Actively tracking and measuring leadership responsibilities such as mentorshop and sponsorship of more junior colleagues</li>
-<li>Identifying organizational skill/competency gaps</li>
-<li>Proactively suggesting new skills to declare or develop</li>
+<li>Actively tracking and measuring leadership responsibilities such as mentorship and sponsorship of more junior colleagues</li>
 <li>Identifying potential succession candidates based on network position and skill similarity</li>
 </ul>
-</div>
 </div><div class="column">
-<br>
+<br><br><br>
 <center>
 <img data-src="img/global-network.png" class="quarto-figure quarto-figure-center" width="500">
 </center>
 </div></div>
 </section>
-<section id="other-one-page-themes" class="slide level2" data-background-image="img/SIOP-brightred-background.png" data-background-size="cover">
-<h2>Other one-page themes</h2>
+<section id="skills" class="slide level2" data-background-image="img/SIOP-lightgrey-background.png" data-background-size="cover">
+<h2>Skills</h2>
+<div class="columns">
+<div class="column">
+<div class="smallertext">
+<ul>
+<li>Relating skills to each other through semantic similarity and co-occurrence in resumes and other documents</li>
+<li>Relating skills, qualifications, and credentials to employees</li>
+<li>Identifying skill gaps in teams and organizations</li>
+<li>Supporting learning through suggesting areas for relevant skill development</li>
+<li>Helping recruiters divert candidates to similar job openings based on skills</li>
+<li>Suggesting relevant roles on recruiting websites/portals</li>
+</ul>
+</div>
+</div><div class="column">
+<br>
+<center>
+<img data-src="img/skill-graph.png" class="quarto-figure quarto-figure-center" width="500">
+</center>
+</div></div>
+</section>
+<section id="organizational-design" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover">
+<h2>Organizational Design</h2>
+<div class="columns">
+<div class="column">
+<div class="smallertext">
+<ul>
+<li>Identifying informal networks and communities of practice within organizations</li>
+<li>Determining key influencers and community connectors</li>
+<li>Identifying potential bottlenecks and single points of failure in communication networks</li>
+<li>Understanding collaboration patterns across teams and functions</li>
+<li>Supporting organizational redesign efforts by simulating changes to org structure and reporting lines</li>
+</ul>
+</div>
+</div><div class="column">
+<br>
+<center>
+<img data-src="img/org-design.gif" class="quarto-figure quarto-figure-center" width="400">
+</center>
+</div></div>
 </section></section>
 <section>
 <section id="a-recent-graph-breakthrough" class="title-slide slide level1 center" data-background-image="img/SIOP-section-background.png" data-background-size="cover">
 <h1>A recent graph breakthrough</h1>
-<p>How we solved the question of time use</p>
+<p>A simulation of how we solved the question of time use</p>
 </section>
-<section id="pages-on-time-use" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover">
-<h2>Pages on time use</h2>
+<section id="the-problem" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover">
+<h2>The problem</h2>
+<div class="columns">
+<div class="column">
+<p><strong>Common questions that people ask in professional services firms:</strong></p>
+<ul>
+<li><p>How did I spend my time across different types of activities?</p></li>
+<li><p>How did I spend my time across different billable projects?</p></li>
+<li><p>Am I creating apprenticeship opportunities for junior colleagues in my projects?</p></li>
+</ul>
+</div><div class="column">
+<center>
+<img data-src="img/hard-problem.webp" class="quarto-figure quarto-figure-center" width="400">
+</center>
+</div></div>
+</section>
+<section id="the-calendar-mystery" class="slide level2" data-background-image="img/SIOP-brightred-background.png" data-background-size="cover">
+<h2>The calendar mystery</h2>
+<div class="columns">
+<div class="column">
+<div class="smallertext">
+<p><strong>Only I understand the context of my calendar:</strong></p>
+<ul>
+<li>Calendar entries are often not very specific (e.g., “Meeting”, “Catch-up”, “Weekly sync”)</li>
+<li>When I read my calendar I understand the context, but others do not</li>
+<li>“Meeting with Keith” + “Keith and I only work on Project X” -&gt; “Meeting about Project X”</li>
+</ul>
+<p><strong>Is there a way we can infer this context algorithmically?</strong></p>
+</div>
+</div><div class="column">
+<center>
+<img data-src="img/basic-calendar.png" class="quarto-figure quarto-figure-center" width="400">
+</center>
+</div></div>
+</section>
+<section id="what-do-we-know" class="slide level2" data-background-image="img/SIOP-darkgrey-background.png" data-background-size="cover">
+<h2>What do we know?</h2>
+<div class="columns">
+<div class="column">
+<p><br> Here is an internal meeting with three attendees. We can determine this information from the calendar metadata.</p>
+<p>We have no idea what the meeting is about.</p>
+</div><div class="column">
+<center>
+<img data-src="img/three-person-meeting.svg" class="quarto-figure quarto-figure-center" width="600">
+</center>
+</div></div>
+</section>
+<section id="lets-add-info-from-other-systems" class="slide level2" data-background-image="img/SIOP-lightgrey-background.png" data-background-size="cover">
+<h2>Let’s add info from other systems…</h2>
+<div class="columns">
+<div class="column">
+<p><br> Let’s add information from a system which tracks what projects people are working on around the date of the meeting.</p>
+<p>This suggests we might be able to infer the meeting context, but it’s not definitive.</p>
+</div><div class="column">
+<center>
+<img data-src="img/add-project-data.svg" class="quarto-figure quarto-figure-center" width="600">
+</center>
+</div></div>
+</section>
+<section id="and-now-revisit-the-calendar-metadata" class="slide level2" data-background-image="img/SIOP-lightgrey-background.png" data-background-size="cover">
+<h2>…and now revisit the calendar metadata</h2>
+<div class="columns">
+<div class="column">
+<p><br> Maybe there were meetings around the same time that had external attendees too?</p>
+<p>Could the email domains of those attendees tell us something useful?</p>
+</div><div class="column">
+<center>
+<img data-src="img/add-externals.svg" class="quarto-figure quarto-figure-center" width="600">
+</center>
+</div></div>
+</section>
+<section id="now-look-at-the-surrounding-time-period" class="slide level2" data-background-image="img/SIOP-darkred-background.png" data-background-size="cover">
+<h2>Now look at the surrounding time period</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li class="fragment">Jim and Pam have been in 6 meetings together recently that had a Sabre attendee.</li>
+<li class="fragment">Jim and Dwight have had 4 recent meetings together with a Sabre attendee, and 5 meetings where Dunder Mifflin was present.</li>
+<li class="fragment">Pam and Dwight have met 9 times together recently, and all meetings had a Sabre attendee.</li>
+</ul>
+</div><div class="column">
+<center>
+<img data-src="img/pair-meetings.svg" class="quarto-figure quarto-figure-center" width="600">
+</center>
+</div></div>
+</section>
+<section id="this-allows-us-to-infer-the-meeting-purpose" class="slide level2" data-background-image="img/SIOP-brightred-background.png" data-background-size="cover">
+<h2>This allows us to infer the meeting purpose</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li class="fragment">Sabre: 3 pairs, 19 meetings</li>
+<li class="fragment">Dunder Mifflin: 1 pair, 5 meetings</li>
+<li class="fragment">High likelihood that this meeting was about Sabre</li>
+</ul>
+</div><div class="column">
+<center>
+<img data-src="img/final-graph.svg" class="quarto-figure quarto-figure-center" width="600">
+</center>
+</div></div>
+</section>
+<section id="scaled-reporting-of-time-use-statistics" class="slide level2" data-background-image="img/SIOP-darkgrey-background.png" data-background-size="cover">
+<h2>Scaled reporting of time use statistics</h2>
+<div class="columns">
+<div class="column">
+<p><br><br><br><br> How did I spend my time across different types of activities?</p>
+</div><div class="column">
+<center>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/time-spread.png" class="quarto-figure quarto-figure-center" width="600"></p>
+</figure>
+</div>
+</center>
+</div></div>
+</section>
+<section id="scaled-reporting-of-time-use-statistics-1" class="slide level2" data-background-image="img/SIOP-darkgrey-background.png" data-background-size="cover">
+<h2>Scaled reporting of time use statistics</h2>
+<div class="columns">
+<div class="column">
+<p><br><br><br><br> How did I spend my time across different projects?</p>
+</div><div class="column">
+<center>
+<p><br> <img data-src="img/project-view.png" class="quarto-figure quarto-figure-center" width="600"></p>
+</center>
+</div></div>
+</section>
+<section id="scaled-reporting-of-time-use-statistics-2" class="slide level2" data-background-image="img/SIOP-darkgrey-background.png" data-background-size="cover">
+<h2>Scaled reporting of time use statistics</h2>
+<div class="columns">
+<div class="column">
+<p><br><br><br> Am I creating apprenticeship opportunities for junior colleagues in my projects?</p>
+</div><div class="column">
+<center>
+<p><br> <img data-src="img/apprenticeship-view.png" class="quarto-figure quarto-figure-center" width="600"></p>
+</center>
+</div></div>
+</section></section>
+<section>
+<section id="thank-you-for-listening" class="title-slide slide level1 center" data-background-image="img/SIOP-section-background.png" data-background-size="cover">
+<h1>Thank you for listening</h1>
+
+</section>
+<section id="end" class="slide level2">
+<h2>End</h2>
 
 </section></section>
     </div>
