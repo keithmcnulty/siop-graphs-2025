@@ -16,17 +16,6 @@ editor: source
 ---
 
 
-## Follow live
-
-<center>
-![](img/qr.png){height=400 fig-align="center"}
-
-[https://siop-lec-2025-client.onrender.com](https://siop-lec-2025-client.onrender.com)
-
-<center>
-
-
-
 # What are graph databases? {background-image="img/SIOP-section-background.png" background-size="cover"}
 
 And why should we use them?
