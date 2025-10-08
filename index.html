@@ -137,17 +137,6 @@ Keith McNulty &amp; Rachel Ramsay, McKinsey &amp; Company
 </div>
 
 </section>
-<section id="follow-live" class="slide level2">
-<h2>Follow live</h2>
-<center>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/qr.png" class="quarto-figure quarto-figure-center" height="400"></p>
-</figure>
-</div>
-<p><a href="https://siop-lec-2025-client.onrender.com">https://siop-lec-2025-client.onrender.com</a></p>
-<center>
-</center></center></section>
 <section>
 <section id="what-are-graph-databases" class="title-slide slide level1 center" data-background-image="img/SIOP-section-background.png" data-background-size="cover">
 <h1>What are graph databases?</h1>
@@ -593,7 +582,8 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-              multiplex: {
+        
+        multiplex: {
           // Example values. To generate your own, see the socket.io server instructions.
 
           secret: "97486ae9da9caf1c491786cc3ddb4cb0",
@@ -607,9 +597,10 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
             src: "/socket.io/socket.io.js",
             async: true,
           },
-          { src: "/master.js", async: true },
-          // { src: "/client.js", async: true },
+          // { src: "/master.js", async: true },
+          { src: "/client.js", async: true },
         ],
+
 'controlsAuto': true,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
