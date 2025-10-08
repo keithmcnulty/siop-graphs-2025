@@ -204,15 +204,10 @@ If you are performing a lot of analysis on relationships between entities, you s
 <p></p>
 <p>Graph databases store data as <strong>nodes</strong> (entities) and <strong>edges</strong> (relationships between entities). Using the Cypher graph query language as an example, the previous query would now look like:</p>
 </div><div class="column">
-<p><br></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="300" height="200"></p>
+<p><img data-src="img/employee-project.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
-</div>
-</div>
 </div>
 </div></div>
 <div class="row">
@@ -447,7 +442,7 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <p>We have no idea what the meeting is about.</p>
 </div><div class="column">
 <center>
-<img data-src="img/three-person-meeting.svg" class="quarto-figure quarto-figure-center" width="600">
+<img data-src="img/three-person-meeting.png" class="quarto-figure quarto-figure-center" height="500">
 </center>
 </div></div>
 </section>
@@ -459,7 +454,7 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <p>This suggests we might be able to infer the meeting context, but it’s not definitive.</p>
 </div><div class="column">
 <center>
-<img data-src="img/add-project-data.svg" class="quarto-figure quarto-figure-center" width="600">
+<img data-src="img/add-project-data.png" class="quarto-figure quarto-figure-center" height="500">
 </center>
 </div></div>
 </section>
@@ -471,7 +466,7 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <p>Could the email domains of those attendees tell us something useful?</p>
 </div><div class="column">
 <center>
-<img data-src="img/add-externals.svg" class="quarto-figure quarto-figure-center" width="600">
+<img data-src="img/add-externals.png" class="quarto-figure quarto-figure-center" height="500">
 </center>
 </div></div>
 </section>
@@ -486,12 +481,12 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 </ul>
 </div><div class="column">
 <center>
-<img data-src="img/pair-meetings.svg" class="quarto-figure quarto-figure-center" width="600">
+<img data-src="img/pair-meetings.png" class="quarto-figure quarto-figure-center" height="500">
 </center>
 </div></div>
 </section>
-<section id="this-allows-us-to-infer-the-meeting-purpose" class="slide level2" data-background-image="img/SIOP-brightred-background.png" data-background-size="cover">
-<h2>This allows us to infer the meeting purpose</h2>
+<section id="inferring-the-purpose-of-meetings" class="slide level2" data-background-image="img/SIOP-brightred-background.png" data-background-size="cover">
+<h2>Inferring the purpose of meetings</h2>
 <div class="columns">
 <div class="column">
 <ul>
@@ -501,7 +496,7 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 </ul>
 </div><div class="column">
 <center>
-<img data-src="img/final-graph.svg" class="quarto-figure quarto-figure-center" width="600">
+<img data-src="img/final-graph.png" class="quarto-figure quarto-figure-center" height="500">
 </center>
 </div></div>
 </section>
@@ -514,7 +509,7 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <center>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="img/time-spread.png" class="quarto-figure quarto-figure-center" width="600"></p>
+<p><img data-src="img/time-spread.png" class="quarto-figure quarto-figure-center" width="600" height="500"></p>
 </figure>
 </div>
 </center>
@@ -527,7 +522,11 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <p><br><br><br><br> How did I spend my time across different projects?</p>
 </div><div class="column">
 <center>
-<p><br> <img data-src="img/project-view.png" class="quarto-figure quarto-figure-center" width="600"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/project-view.png" class="quarto-figure quarto-figure-center" width="600" height="500"></p>
+</figure>
+</div>
 </center>
 </div></div>
 </section>
@@ -538,12 +537,18 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
 <p><br><br><br> Am I creating apprenticeship opportunities for junior colleagues in my projects?</p>
 </div><div class="column">
 <center>
-<p><br> <img data-src="img/apprenticeship-view.png" class="quarto-figure quarto-figure-center" width="600"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/apprenticeship-view.png" class="quarto-figure quarto-figure-center" width="600" height="500"></p>
+</figure>
+</div>
 </center>
 </div></div>
-</section>
-<section id="thank-you-for-listening" class="slide level2" data-background-image="img/SIOP-section-background.png" data-background-size="cover">
-<h2>Thank you for listening</h2>
+</section></section>
+<section>
+<section id="thank-you-for-listening" class="title-slide slide level1 center" data-background-image="img/SIOP-section-background.png" data-background-size="cover">
+<h1>Thank you for listening</h1>
+
 </section>
 <section id="end" class="slide level2">
 <h2>End</h2>
@@ -577,6 +582,25 @@ RETURN DISTINCT e1.employeeId, e2.employeeId, d.departmentCode;</code></pre>
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
+        
+        multiplex: {
+          // Example values. To generate your own, see the socket.io server instructions.
+
+          secret: "97486ae9da9caf1c491786cc3ddb4cb0",
+          id: "cf80f1c5931557c12748d1babafbdf574acecf56c3ec319cc871a52f7af0b4c9",
+          url: "https://test-pages-jpa1.onrender.com", // Location of socket.io server
+        },
+        // Don't forget to add the dependencies
+        // Don't forget to add the dependencies
+        dependencies: [
+          {
+            src: "/socket.io/socket.io.js",
+            async: true,
+          },
+          { src: "/master.js", async: true },
+          // { src: "/client.js", async: true },
+        ],
+
 'controlsAuto': true,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,

@@ -93,51 +93,8 @@ Using the Cypher graph query language as an example, the previous query would no
 :::
 
 :::column
-<br>
-```{r, out.height = "200px", out.width = "300px"}
-#| echo: FALSE
+![](img/employee-project.png){height=400 fig-align="center"}
 
-library(igraph)
-library(ggraph)
-
-edgelist <- data.frame(
-  from = c("e1", "e2"),
-  to = c("d", "d")
-)
-
-example_graph <- igraph::graph_from_data_frame(edgelist, directed = TRUE)
-
-V(example_graph)$color <- ifelse(
-  V(example_graph)$name %in% c("e1", "e2"), "lightblue", "pink"
-)
-
-V(example_graph)$type <- ifelse(V(example_graph)$name %in% c("e1", "e2"),
-                          "Employee", 
-                          "Department")
-
-
-
-# more visible edges 
-E(example_graph)$width <- 3
-E(example_graph)$label <- "WORKED_IN -->"
-
-set.seed(123)
-
-ggraph(example_graph, layout = "eigen") +
-  geom_edge_link(aes(label = label), 
-                 angle_calc = 'along',
-                 label_dodge = unit(2.5, 'mm'),
-                 arrow = arrow(length = unit(4, 'mm')), 
-                 end_cap = circle(3, 'mm'), 
-                 label_size = 6) + 
-  geom_node_point(aes(color = as.factor(type)), size = 20, 
-                  show.legend = FALSE) +
-  labs(color = "Type") +
-  ylim(-1, 1) +
-  xlim(-1, 1) +
-  geom_node_text(aes(label = paste0(name, ": ", type)), nudge_y = -0.2, size = 6) +
-  theme_void()
-```
 :::
 :::
 
@@ -443,7 +400,7 @@ We have no idea what the meeting is about.
 
 ::: column
 <center>
-![](img/three-person-meeting.svg){width=600 fig-align="center"}
+![](img/three-person-meeting.png){height=500 fig-align="center"}
 </center>
 :::
 
@@ -463,7 +420,7 @@ This suggests we might be able to infer the meeting context, but it's not defini
 
 ::: column
 <center>
-![](img/add-project-data.svg){width=600 fig-align="center"}
+![](img/add-project-data.png){height=500 fig-align="center"}
 </center>
 :::
 
@@ -482,7 +439,7 @@ Could the email domains of those attendees tell us something useful?
 
 ::: column
 <center>
-![](img/add-externals.svg){width=600 fig-align="center"}
+![](img/add-externals.png){height=500 fig-align="center"}
 </center>
 :::
 
@@ -506,13 +463,13 @@ Could the email domains of those attendees tell us something useful?
 
 ::: column
 <center>
-![](img/pair-meetings.svg){width=600 fig-align="center"}
+![](img/pair-meetings.png){height=500 fig-align="center"}
 </center>
 :::
 
 :::
 
-## This allows us to infer the meeting purpose {background-image="img/SIOP-brightred-background.png" background-size="cover"}
+## Inferring the purpose of meetings {background-image="img/SIOP-brightred-background.png" background-size="cover"}
 
 ::: columns
 
@@ -529,7 +486,7 @@ Could the email domains of those attendees tell us something useful?
 
 ::: column
 <center>
-![](img/final-graph.svg){width=600 fig-align="center"}
+![](img/final-graph.png){height=500 fig-align="center"}
 </center>
 :::
 
@@ -551,7 +508,7 @@ How did I spend my time across different types of activities?
 :::column
 <center>
 
-![](img/time-spread.png){width=600 fig-align="center"}
+![](img/time-spread.png){height=500 width=600 fig-align="center"}
 
 </center>
 
@@ -560,7 +517,7 @@ How did I spend my time across different types of activities?
 
 
 
-# Scaled reporting of time use statistics {background-image="img/SIOP-darkgrey-background.png" background-size="cover"}
+## Scaled reporting of time use statistics {background-image="img/SIOP-darkgrey-background.png" background-size="cover"}
 
 
 :::columns
@@ -575,8 +532,7 @@ How did I spend my time across different projects?
 
 :::column
 <center>
-<br>
-![](img/project-view.png){width=600 fig-align="center"}
+![](img/project-view.png){height=500 width=600 fig-align="center"}
 
 </center>
 
@@ -600,8 +556,7 @@ Am I creating apprenticeship opportunities for junior colleagues in my projects?
 
 :::column
 <center>
-<br>
-![](img/apprenticeship-view.png){width=600 fig-align="center"}
+![](img/apprenticeship-view.png){height=500 width=600 fig-align="center"}
 
 </center>
 
