@@ -16,7 +16,7 @@ editor: source
 ---
 
 
-# What are graph databases? {background-image="img/SIOP-section-background.png" background-size="cover"}
+## What are graph databases? {background-image="img/SIOP-section-background.png" background-size="cover"}
 
 And why should we use them?
 
@@ -266,7 +266,7 @@ Resource Description Framework (RDF):
                         height: 100px;"></div>
                         
                         
-# Graph DBs in the wild {background-image="img/SIOP-section-background.png" background-size="cover"}
+## Graph DBs in the wild {background-image="img/SIOP-section-background.png" background-size="cover"}
 
 A very quick overview of scaled use cases
 
@@ -375,7 +375,7 @@ A very quick overview of scaled use cases
 :::
 
 
-# A recent graph breakthrough {background-image="img/SIOP-section-background.png" background-size="cover"}
+## A recent graph breakthrough {background-image="img/SIOP-section-background.png" background-size="cover"}
 
 A simulation of how we solved the question of time use
 
@@ -560,7 +560,7 @@ How did I spend my time across different types of activities?
 
 
 
-# Scaled reporting of time use statistics {background-image="img/SIOP-darkgrey-background.png" background-size="cover"}
+## Scaled reporting of time use statistics {background-image="img/SIOP-darkgrey-background.png" background-size="cover"}
 
 
 :::columns
@@ -609,9 +609,7 @@ Am I creating apprenticeship opportunities for junior colleagues in my projects?
 :::
 
 
-# Thank you for listening {background-image="img/SIOP-section-background.png" background-size="cover"}
+## Thank you for listening {background-image="img/SIOP-section-background.png" background-size="cover"}
 
 ## End
-
-
 
