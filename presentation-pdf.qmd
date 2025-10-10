@@ -93,7 +93,7 @@ Using the Cypher graph query language as an example, the previous query would no
 :::
 
 :::column
-![](img/employee-project.png){height=400 fig-align="center"}
+![](img/employee-project.png){height=300 fig-align="center"}
 :::
 :::
 
@@ -399,7 +399,7 @@ We have no idea what the meeting is about.
 
 ::: column
 <center>
-![](img/three-person-meeting.png){height=500 fig-align="center"}
+![](img/three-person-meeting.png){fig-align="center"}
 </center>
 :::
 
@@ -419,7 +419,7 @@ This suggests we might be able to infer the meeting context, but it's not defini
 
 ::: column
 <center>
-![](img/add-project-data.png){height=500 fig-align="center"}
+![](img/add-project-data.png){fig-align="center"}
 </center>
 :::
 
@@ -438,7 +438,7 @@ Could the email domains of those attendees tell us something useful?
 
 ::: column
 <center>
-![](img/add-externals.png){height=500 fig-align="center"}
+![](img/add-externals.png){fig-align="center"}
 </center>
 :::
 
@@ -462,7 +462,7 @@ Could the email domains of those attendees tell us something useful?
 
 ::: column
 <center>
-![](img/pair-meetings.png){height=500 fig-align="center"}
+![](img/pair-meetings.png){fig-align="center"}
 </center>
 :::
 
@@ -485,7 +485,7 @@ Could the email domains of those attendees tell us something useful?
 
 ::: column
 <center>
-![](img/final-graph.png){height=500 fig-align="center"}
+![](img/final-graph.png){fig-align="center"}
 </center>
 :::
 
@@ -507,7 +507,7 @@ How did I spend my time across different types of activities?
 :::column
 <center>
 
-![](img/time-spread.png){height=500 width=600 fig-align="center"}
+![](img/time-spread.png){width=600 fig-align="center"}
 
 </center>
 
@@ -531,7 +531,8 @@ How did I spend my time across different projects?
 
 :::column
 <center>
-![](img/project-view.png){height=500 width=600 fig-align="center"}
+<br>
+![](img/project-view.png){width=600 fig-align="center"}
 
 </center>
 
@@ -555,7 +556,8 @@ Am I creating apprenticeship opportunities for junior colleagues in my projects?
 
 :::column
 <center>
-![](img/apprenticeship-view.png){height=500 width=600 fig-align="center"}
+<br>
+![](img/apprenticeship-view.png){width=600 fig-align="center"}
 
 </center>
 
